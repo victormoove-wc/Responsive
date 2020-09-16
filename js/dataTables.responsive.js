@@ -1012,7 +1012,8 @@ $.extend( Responsive.prototype, {
 		var dt = this.s.dt;
 		var display = showHide ? '' : 'none'; // empty string will remove the attr
 
-		$( dt.column( col ).header() ).css( 'display', display );
+		//To accomodate complex headers with more than one row
+		$( dt.table().header() ).find( 'tr th:nth-child(' + (col + 1) + ')' ).css( 'display', display );
 		$( dt.column( col ).footer() ).css( 'display', display );
 		dt.column( col ).nodes().to$().css( 'display', display );
 
